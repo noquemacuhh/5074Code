@@ -20,7 +20,7 @@ public class CoralSubsystem extends SubsystemBase {
 
   @SuppressWarnings("deprecation")
   public CoralSubsystem() {
-      coralrelease = new SparkMax(Constants.CoralConstants.CoralMotorID, MotorType.kBrushless);
+      coralrelease = new SparkMax(Constants.CoralConstants.CoralMotorID, MotorType.kBrushed);
       coralrelease.setInverted(false);
 
       

@@ -15,10 +15,10 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 public class DriveTrainSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  SparkMax LeftFront = new SparkMax(Constants.DriveTrainConstants.LeftFrontID, MotorType.kBrushless);
-  SparkMax LeftBack = new SparkMax(Constants.DriveTrainConstants.LeftBackID, MotorType.kBrushless);
-  SparkMax RightFront = new SparkMax(Constants.DriveTrainConstants.RightFrontID, MotorType.kBrushless);
-  SparkMax RightBack = new SparkMax(Constants.DriveTrainConstants.RightBackID, MotorType.kBrushless);
+  SparkMax LeftFront = new SparkMax(Constants.DriveTrainConstants.LeftFrontID, MotorType.kBrushed);
+  SparkMax LeftBack = new SparkMax(Constants.DriveTrainConstants.LeftBackID, MotorType.kBrushed);
+  SparkMax RightFront = new SparkMax(Constants.DriveTrainConstants.RightFrontID, MotorType.kBrushed);
+  SparkMax RightBack = new SparkMax(Constants.DriveTrainConstants.RightBackID, MotorType.kBrushed);
 
   //These are going to be in as a comment incase we use encoders in the future
   /* 

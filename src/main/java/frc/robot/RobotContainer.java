@@ -7,22 +7,23 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.DrivewithPS5Command;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.CoralSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
 
-import java.io.IOException;
-import java.nio.file.Path;
+//import java.io.IOException;
+//import java.nio.file.Path;
 
 
-import edu.wpi.first.math.trajectory.Trajectory;
-import edu.wpi.first.math.trajectory.TrajectoryUtil;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Filesystem;
+//import edu.wpi.first.math.trajectory.Trajectory;
+//import edu.wpi.first.math.trajectory.TrajectoryUtil;
+//import edu.wpi.first.wpilibj.DriverStation;
+//import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.PS5Controller;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+//import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
+//import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -35,7 +36,10 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
+
   private final CoralSubsystem coralSubsystem = new CoralSubsystem();
+
+  private final ArmSubsystem armSubsystem = new ArmSubsystem();
   
   public static final PS5Controller m_ps5Controller = new PS5Controller(0);
  
@@ -53,6 +57,10 @@ public class RobotContainer {
     driveTrainSubsystem.setDefaultCommand(new DrivewithPS5Command(driveTrainSubsystem));
     
     coralSubsystem.setDefaultCommand(new DrivewithPS5Command(coralSubsystem));
+
+    armSubsystem.setDefaultCommand(new DrivewithPS5Command(armSubsystem));
+    
+    /* Undo This once we get the encoders -Josh
 
     chooser.addOption("Hard Path",pathplannerTrajectroyRamsetCommand("C:\\Users\\joshu\\Desktop\\5074V1Code\\src\\main\\deploy\\pathplanner\\paths\\Hard Path.path", true));
     chooser.addOption("Easy Path", pathplannerTrajectroyRamsetCommand("C:\\Users\\joshu\\Desktop\\5074V1Code\\src\\main\\deploy\\pathplanner\\paths\\Easy Path.path", true));
@@ -73,7 +81,7 @@ public class RobotContainer {
       }
           return null;
     }
- 
+ */  }
 
   /**
    * Use this method to define your trigger->command mappings. Triggers can be created via the
