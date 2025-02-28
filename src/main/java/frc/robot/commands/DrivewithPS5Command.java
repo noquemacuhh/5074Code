@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.CoralSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -12,6 +13,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class DrivewithPS5Command extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final DriveTrainSubsystem driveTrainSubsystem;
+  @SuppressWarnings("unused")
+  private CoralSubsystem coralSubsystem;
 
   /**
    * Creates a new ExampleCommand.
@@ -22,6 +25,12 @@ public class DrivewithPS5Command extends Command {
     this.driveTrainSubsystem = driveTrainSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(driveTrainSubsystem);
+  }
+
+  public DrivewithPS5Command(CoralSubsystem coralrelease) {
+    this.driveTrainSubsystem = null; // or initialize it properly if needed
+    this.coralSubsystem = coralrelease;
+    addRequirements(coralSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -35,7 +44,12 @@ public class DrivewithPS5Command extends Command {
     double fowardspeed = RobotContainer.m_ps5Controller.getLeftY();
     double turnspeed = RobotContainer.m_ps5Controller.getRightX();
     driveTrainSubsystem.arcadeDrive(fowardspeed, -turnspeed);
-
+    
+    double speed = RobotContainer.m_ps5Controller.getR2Axis();
+    coralSubsystem.moveRoller(speed);
+  }
+  public void moveRoller(double speed) {
+    coralSubsystem.moveRoller(speed);
   }
   public void arcadeDrive(double fwd, double rot) {
     driveTrainSubsystem.arcadeDrive(fwd, rot);

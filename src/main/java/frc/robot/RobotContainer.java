@@ -7,6 +7,7 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.DrivewithPS5Command;
+import frc.robot.subsystems.CoralSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
 
 import java.io.IOException;
@@ -34,6 +35,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
+  private final CoralSubsystem coralSubsystem = new CoralSubsystem();
   
   public static final PS5Controller m_ps5Controller = new PS5Controller(0);
  
@@ -49,6 +51,8 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
     driveTrainSubsystem.setDefaultCommand(new DrivewithPS5Command(driveTrainSubsystem));
+    
+    coralSubsystem.setDefaultCommand(new DrivewithPS5Command(coralSubsystem));
 
     chooser.addOption("Hard Path",pathplannerTrajectroyRamsetCommand("C:\\Users\\joshu\\Desktop\\5074V1Code\\src\\main\\deploy\\pathplanner\\paths\\Hard Path.path", true));
     chooser.addOption("Easy Path", pathplannerTrajectroyRamsetCommand("C:\\Users\\joshu\\Desktop\\5074V1Code\\src\\main\\deploy\\pathplanner\\paths\\Easy Path.path", true));
