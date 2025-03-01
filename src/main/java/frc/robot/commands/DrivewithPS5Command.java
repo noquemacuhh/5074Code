@@ -27,28 +27,14 @@ public class DrivewithPS5Command extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public DrivewithPS5Command(DriveTrainSubsystem driveTrainSubsystem) {
+  public DrivewithPS5Command(DriveTrainSubsystem driveTrainSubsystem, CoralSubsystem coralSubsystem, ArmSubsystem armSubsystem) {
     this.driveTrainSubsystem = driveTrainSubsystem;
-    this.coralSubsystem = null; // or initialize it properly if needed
-    this.armSubsystem = null; // or initialize it properly if needed
+    this.coralSubsystem = coralSubsystem;
+    this.armSubsystem = armSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(driveTrainSubsystem);
+    addRequirements(driveTrainSubsystem, coralSubsystem, armSubsystem);
   }
 
-  public DrivewithPS5Command(CoralSubsystem coralrelease) {
-    this.driveTrainSubsystem = null; // or initialize it properly if needed
-    this.coralSubsystem = coralrelease;
-    this.armSubsystem = null; // initialize armSubsystem to null
-    addRequirements(coralSubsystem);
-  }
-
-  public DrivewithPS5Command(ArmSubsystem arm) {
-    this.driveTrainSubsystem = null; // or initialize it properly if needed
-    this.armSubsystem = arm;
-    coralSubsystem = null; // or initialize it properly if needed
-    addRequirements(arm);
-  }
-  
 
   // Called when the command is initially scheduled.
   @Override

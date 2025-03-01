@@ -4,13 +4,12 @@
 
 package frc.robot.subsystems;
 
-import java.util.function.DoubleSupplier;
+
 
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -31,9 +30,18 @@ public class CoralSubsystem extends SubsystemBase {
     coralrelease.set(0.1 * speed);
 
   }
-  public Command runRoller(CoralSubsystem coralRelease, DoubleSupplier forward, DoubleSupplier reverse) {
-      return Commands.run(() -> coralrelease.set(forward.getAsDouble() - reverse.getAsDouble()), coralRelease);
-    }
+  public Command moveRoller(CoralSubsystem coralrelase, double speed) {
+    return new Command() {
+        @Override
+        public void initialize() {
+            moveRoller(speed);
+        }
+        @Override
+        public boolean isFinished() {
+            return false;
+        }
+    };
+  }
 
   @Override
   public void periodic() {

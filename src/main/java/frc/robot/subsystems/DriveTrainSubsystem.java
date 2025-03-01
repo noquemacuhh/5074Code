@@ -40,9 +40,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
     drive.arcadeDrive(speed, rotation);
   }
 
-  @SuppressWarnings("deprecation")
+  //@SuppressWarnings("deprecation")
   public DriveTrainSubsystem() {
     //set up the motors
+    /* 
     LeftFront.setInverted(true);
     LeftBack.setInverted(true);
     RightFront.setInverted(false);
