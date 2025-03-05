@@ -5,12 +5,12 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.Autos;
 import frc.robot.commands.DrivewithPS5Command;
+import frc.robot.commands.TimedAuto;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.CoralSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
-
+import frc.robot.subsystems.AlgaeSubsystem;
 
 
 //import java.io.IOException;
@@ -33,27 +33,23 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
 
-  public final static CoralSubsystem coralSubsystem = new CoralSubsystem();
-
+  public final CoralSubsystem coralSubsystem = new CoralSubsystem();
   public final ArmSubsystem armSubsystem = new ArmSubsystem();
+  public final AlgaeSubsystem algaeSubsystem = new AlgaeSubsystem();
   
   public static final PS5Controller m_ps5Controller = new PS5Controller(0);
- 
+
  
   // Replace with CommandPS4Controller or CommandJoystick if needed
-    private final PS5Controller m_driverController =
-        new PS5Controller(OperatorConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
-    driveTrainSubsystem.setDefaultCommand(new DrivewithPS5Command(driveTrainSubsystem, null, armSubsystem));
+    driveTrainSubsystem.setDefaultCommand(new DrivewithPS5Command(driveTrainSubsystem, coralSubsystem, armSubsystem, algaeSubsystem));
     
-    coralSubsystem.setDefaultCommand(new DrivewithPS5Command(null, coralSubsystem, null));
-
-    armSubsystem.setDefaultCommand(new DrivewithPS5Command(null, null, armSubsystem));
+    
     
   }
        
@@ -77,9 +73,7 @@ public class RobotContainer {
     new Trigger(() -> m_ps5Controller.getL2ButtonPressed()).whileTrue(coralSubsystem.moveRoller(coralSubsystem, 1));
     new Trigger(() -> m_ps5Controller.getR2ButtonPressed()).whileTrue(coralSubsystem.moveRoller(coralSubsystem, -1));
 
-    // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
-    // cancelling on release.
-    new Trigger(() -> m_driverController.getRawButton(2)).whileTrue(driveTrainSubsystem.exampleMethodCommand());
+   
   }
 
   /**
@@ -88,7 +82,8 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
-    return Autos.exampleAuto(driveTrainSubsystem);
+  
+    return new TimedAuto(driveTrainSubsystem);
+    // return Autos.exampleAuto(driveTrainSubsystem, coralSubsystem, armSubsystem);
   }
 }

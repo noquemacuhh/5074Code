@@ -1,33 +1,30 @@
 package frc.robot.subsystems;
 
+import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
-import com.revrobotics.spark.SparkMax;
-
 import frc.robot.Constants;
 
-public class ArmSubsystem extends SubsystemBase {
-    private final SparkMax armMotor = new SparkMax(Constants.ArmConstants.ArmMotorID, MotorType.kBrushed);
+public class AlgaeSubsystem extends SubsystemBase {
+    SparkMax algaeMotor = new SparkMax(Constants.AlgaetConstants.AlgaeMotorID, MotorType.kBrushed);
     
-
-    public ArmSubsystem() {
+      public AlgaeSubsystem() {
         //armMotor.setInverted(true);
         //armEncoder.setPosition(0);
     }
 
-    public void moveArm(double speed) {                
-        armMotor.set(speed);
+    public void movealgae(double speed) {                
+        algaeMotor.set(speed);
     
     }
 
-    public Command runArm(ArmSubsystem arm, double speed) {
+    public Command runAlage(AlgaeSubsystem algae, double speed) {
         return new Command() {
             @Override
             public void initialize() {
-                moveArm(speed);
+                movealgae(speed);
             }
 
             @Override
@@ -39,7 +36,8 @@ public class ArmSubsystem extends SubsystemBase {
     }
 
     public void stopArm() {
-        armMotor.stopMotor();
+        algaeMotor.stopMotor();
     }
-    
+
+
 }
