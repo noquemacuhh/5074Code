@@ -22,15 +22,16 @@ public class CoralSubsystem extends SubsystemBase {
       coralrelease = new SparkMax(Constants.CoralConstants.CoralMotorID, MotorType.kBrushed);
       coralrelease.setInverted(false);
 
+
       
      
     
   }
   public void moveRoller(double speed) {
-    coralrelease.set(0.1 * speed);
+    coralrelease.set(0.4 * speed);
 
   }
-  public Command moveRoller(CoralSubsystem coralrelase, double speed) {
+  public Command moveRoller(int coralrelase, double speed) {
     return new Command() {
         @Override
         public void initialize() {
@@ -42,7 +43,8 @@ public class CoralSubsystem extends SubsystemBase {
         }
     };
   }
-
+  public void setSafetyEnable(boolean enable) {
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

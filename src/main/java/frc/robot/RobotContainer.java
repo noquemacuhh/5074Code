@@ -70,8 +70,8 @@ public class RobotContainer {
     new Trigger(driveTrainSubsystem::exampleCondition)
         .onTrue(new DrivewithPS5Command(driveTrainSubsystem));
     */
-    new Trigger(() -> m_ps5Controller.getL2ButtonPressed()).whileTrue(coralSubsystem.moveRoller(coralSubsystem, 1));
-    new Trigger(() -> m_ps5Controller.getR2ButtonPressed()).whileTrue(coralSubsystem.moveRoller(coralSubsystem, -1));
+    //new Trigger(() -> m_ps5Controller.getL2ButtonPressed()).whileTrue(coralSubsystem.moveRoller(1));
+    //new Trigger(() -> m_ps5Controller.getR2ButtonPressed()).whileTrue(coralSubsystem.moveRoller(-1));
 
    
   }
@@ -83,7 +83,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
   
-    return new TimedAuto(driveTrainSubsystem);
+    return new TimedAuto(driveTrainSubsystem, coralSubsystem);
     // return Autos.exampleAuto(driveTrainSubsystem, coralSubsystem, armSubsystem);
   }
 }
