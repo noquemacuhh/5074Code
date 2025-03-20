@@ -56,15 +56,15 @@ public class DrivewithPS5Command extends Command {
 
     // Control the arm motor based on L2 axis and L1 button
     if (isL2ButtonPressed) {
-      armSubsystem.moveArm(0.8); // Move forward
+      armSubsystem.moveArm(5.0); // Move forward
     } else if (currentL1ButtonState) {
-      armSubsystem.moveArm(-0.8); // Move backward
+      armSubsystem.moveArm(-5.0); // Move backward
     } else {
       armSubsystem.moveArm(0.0); // Stop the motor
     }
     // Control the coral release motor based on R2 axis and R1 button
     if (isR2ButtonPressed) {
-      coralSubsystem.moveRoller(0.8); // Move forward
+      coralSubsystem.moveRoller(0.65); // Move forward
     } else if (currentR1ButtonState) {
       coralSubsystem.moveRoller(-0.8); // Move backward
     } else {

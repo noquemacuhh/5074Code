@@ -28,7 +28,7 @@ public class CoralSubsystem extends SubsystemBase {
     
   }
   public void moveRoller(double speed) {
-    coralrelease.set(0.4 * speed);
+    coralrelease.set(0.8 * speed);
 
   }
   public Command moveRoller(int coralrelase, double speed) {

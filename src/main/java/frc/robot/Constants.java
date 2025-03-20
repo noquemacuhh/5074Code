@@ -18,6 +18,7 @@ public final class Constants {
   } 
   public static final class ArmConstants {
     public static final int ArmMotorID = 5;
+    public static final int ArmMotorID2 = 8;
   }
   public static final class CoralConstants {
     public static final int CoralMotorID = 6;
