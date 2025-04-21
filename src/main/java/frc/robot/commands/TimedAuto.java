@@ -13,20 +13,28 @@ public class TimedAuto extends SequentialCommandGroup{
 
         addRequirements(driveTrainSubsystem, coralSubsystem);
 
+
+
         addCommands(
-            new DriveTimed(driveTrainSubsystem, .9).withSpeed( -1.0).withRotation(0),
-            new MoveRollerTimed(coralSubsystem, 0.4, .6),
-            new DriveTimed(driveTrainSubsystem, .5).withSpeed (0).withRotation(0),
-            new DriveTimed(driveTrainSubsystem, .5).withSpeed (1.0).withRotation(0),
+            new DriveTimed(driveTrainSubsystem, 2.2).withSpeed( -0.80).withRotation(0),
+            new MoveRollerTimed(coralSubsystem, 0.6, .8),
+            new DriveTimed(driveTrainSubsystem, 0.5),
+            new DriveTimed(driveTrainSubsystem, .6).withSpeed (1).withRotation(0),
             new DriveTimed(driveTrainSubsystem, .5).withSpeed (0).withRotation(0.55),
-            new DriveTimed(driveTrainSubsystem, 1.2).withSpeed(-1).withRotation(0),
+            new DriveTimed(driveTrainSubsystem, .85).withSpeed(-1).withRotation(0),
             new DriveTimed(driveTrainSubsystem, .5).withSpeed(0).withRotation(-1.2),
-            new DriveTimed(driveTrainSubsystem,0.8).withSpeed(0.8),
+            new DriveTimed(driveTrainSubsystem,0.95).withSpeed(0.9),
+            new DriveTimed(driveTrainSubsystem, 0.3).withSpeed(0).withRotation(-0.7),
+            new DriveTimed(driveTrainSubsystem,0.5).withSpeed(0.7),
             new DriveTimed(driveTrainSubsystem, 1).withSpeed(0).withRotation(0),
-            new DriveTimed(driveTrainSubsystem, 1.1).withSpeed(-1).withRotation(0),
+            new DriveTimed(driveTrainSubsystem,0.5).withSpeed(-0.3).withRotation(0),
+            new DriveTimed(driveTrainSubsystem, 0.3).withSpeed(0).withRotation(0.3),
+            new DriveTimed(driveTrainSubsystem, 0.3).withSpeed(-0.1).withRotation(0),
+            new DriveTimed(driveTrainSubsystem, 0.3).withSpeed(0).withRotation(-0.2),
+            new DriveTimed(driveTrainSubsystem, 1.5).withSpeed(-0.5).withRotation(0),
             new MoveRollerTimed(coralSubsystem, 0.4, .6),
-            new DriveTimed(driveTrainSubsystem, 0.9).withSpeed(1.0).withRotation(0)
-            
+            new DriveTimed(driveTrainSubsystem, 2.0).withSpeed(0.3).withRotation(0)
+        
           
            
         );
